@@ -1,0 +1,1961 @@
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renegade Rallysport - American Rally Association</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sans-Serif', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 2000px;
+            margin:  auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff4444;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #ff4444;
+        }
+
+        .hero {
+            height: 110vh;
+            background: linear-gradient(45deg, #ff4444, #cc0000, #990000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero img {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: #000000;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #ff4444;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: linear-gradient(135deg, #222222, #333333);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff4444;
+            box-shadow: 0 20px 40px rgba(255, 68, 68, 0.2);
+        }
+
+        .social-card h3 {
+            color: #ff4444;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .social-card a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background: #ff4444;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-card a:hover {
+            background: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .merchandise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .merch-card {
+            background: linear-gradient(135deg, #222222, #333333);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .merch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 68, 68, 0.2);
+        }
+
+        .merch-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #222222, #333333);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #444444;
+            border-radius: 10px;
+            background: #111111;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff4444;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+
+            .merchandise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .team-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        } 
+        
+        .stat-link {
+            text-decoration: none;
+        }
+
+        .stat-card {
+            background-color: #ff7f2a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 240px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: #111;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+        /* Gallery Styles */
+.gallery-folders {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.folder-card {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 350px;
+    cursor: pointer;
+}
+
+.folder-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: #ff6b35;
+}
+
+.folder-thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.folder-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.folder-card:hover .folder-thumb img {
+    transform: scale(1.1);
+}
+
+.folder-card h3 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.folder-card .photo-count {
+    text-align: center;
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+.gallery-view {
+    display: none;
+}
+
+.gallery-view.active {
+    display: block;
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.back-button {
+    background: linear-gradient(145deg, #ff6b35, #e55a2b);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.gallery-title {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.photo-item {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border-color: #ff6b35;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+.photo-caption {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-align: center;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 107, 53, 0.8);
+}
+
+.lightbox-prev {
+    left: -60px;
+}
+
+.lightbox-next {
+    right: -60px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gallery-folders {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .folder-card {
+        max-width: 100%;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .gallery-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .lightbox-nav {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .lightbox-prev {
+        left: -40px;
+    }
+
+    .lightbox-next {
+        right: -40px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showSection('home')"> <img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/team%20logo.png" width="110px" alt="Renegade Rallysport Logo" /></a>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('gallery')">Gallery</a></li>
+                <li><a onclick="showSection('social')">Social Media</a></li>
+                <li><a onclick="showSection('merchandise')">Merchandise</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+        </header>
+    <section id="home" class="hero">
+        <div class="hero-content">
+          <div style="text-align:center;">
+<img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/NIKHIL_THAKUR_5IN_DIECUT_STICKER.PNG" width="700px" alt="Renegade Rallysport Logo" />
+            </div>
+            <p>Competing in American Rally Association's Limited Two Wheel Drive Class</p>
+            <a href="#" class="cta-button" onclick="showSection('about')">Learn More</a>
+        </div>
+    </section>
+<section id="about" class="section">
+  <h2>About Our Team</h2>
+  <div class="about-content">
+    <p>
+      Renegade Rallysport is a dedicated rally team competing in the American Rally Association's Limited Two Wheel Drive class. We bring passion, precision, and relentless determination to every stage.
+    </p>
+    <p>
+      Our team represents the spirit of grassroots motorsport, combining technical expertise with the raw excitement of rally racing. From forest stages to desert trails, we push our machines and ourselves to the absolute limit.
+    </p>
+    <p>
+      Follow our journey as we tackle the most challenging rally events across America, always striving for that perfect balance of speed and control that defines championship rally driving.
+    </p>
+    
+    <div class="team-stats">
+      <a href="https://www.sneakattackrally.com/ARACombinerThing/schedule.html" target="_blank" class="stat-link">
+        <div class="stat-card">
+          <h3>2025</h3>
+          <p>Season Active</p>
+        </div>
+      </a>
+      
+      <a href="https://www.sneakattackrally.com/ARACombinerThing/index.html" target="_blank" class="stat-link">
+        <div class="stat-card">
+          <h3>L2WD</h3>
+          <p>Competition Class</p>
+        </div>
+      </a>
+      
+      <a href="https://www.americanrallyassociation.org" target="_blank" class="stat-link">
+        <div class="stat-card">
+          <h3>ARA</h3>
+          <p>Racing Series</p>
+        </div>
+      </a>
+      
+      <a href="https://www.ewrc-results.com/profile/330579-nikhil-thakur/" target="_blank" class="stat-link">
+        <div class="stat-card">
+          <h3>Nikhil Thakur</h3>
+          <p>Driver</p>
+        </div>
+      </a>
+      
+      <a href="https://www.ewrc-results.com/coprofile/433362-zachary-goldstein/" target="_blank" class="stat-link">
+        <div class="stat-card">
+          <h3>Zachary Goldstein</h3>
+          <p>Co-Driver</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+    <section id="social" class="section">
+        <h2>Follow Our Journey</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #cccccc;">
+            Stay connected with Renegade Rallysport across all our social media platforms
+        </p>
+        <div class="social-links">
+            <div class="social-card">
+                <h3><img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/facebook-logo.png" width="25px" alt="Facebook Logo" /> Facebook</h3>
+                <p>Get the latest updates, race results, and behind-the-scenes content from our team.</p>
+                <a href="https://www.facebook.com/profile.php?id=61556547743608" target="_blank">Visit Facebook</a>
+            </div>
+            <div class="social-card">
+                <h3><img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/%5BCITYPNG.COM%5DRed%20Youtube%20Logo%20Symbol%20-%20800x800.png" width="25px" alt="Youtube Logo" /> Youtube</h3>
+                <p>Watch our race highlights, onboard footage, and technical breakdowns.</p>
+                <a href="https://youtube.com/channel/UCb74NYFwX_V9LvbzND0STlQ" target="_blank">Visit YouTube</a>
+            </div>
+            <div class="social-card">
+                <h3><img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/toppng.com-transparent-instagram-logo-1020x680.png" width="30px" alt="Instagram Logo" /> Instagram</h3>
+                <p>Follow our daily adventures and stunning rally photography.</p>
+                <a href="https://www.instagram.com/renegaderallysport/?igsh=bDA2eGNhdGVvMG#" target="_blank">Visit Instagram</a>
+            </div>
+            <div class="social-card">
+                <h3><img src="https://uploads.onecompiler.io/43nk8cywp/43nk6fqge/1691751010tiktok-logo-white.png" width="20px" alt="TikTok Logo" /> TikTok</h3>
+                <p>Short-form content, quick tips, and fun rally moments.</p>
+                <a href="https://tiktok.com/@renegaderallysport" target="_blank">Visit TikTok</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="merchandise" class="section">
+        <h2>Team Merchandise</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #cccccc;">
+            Show your support with official Renegade Rallysport gear
+        </p>
+        <div class="merchandise-grid">
+            <div class="merch-card">
+                <div class="merch-placeholder">
+                    Team T-Shirts
+                </div>
+                <h3>Official Team Apparel</h3>
+                <p>Premium quality shirts featuring our team logo and colors. Perfect for race day or everyday wear.</p>
+                <p style="color: #ff4444; font-weight: bold; margin-top: 1rem;">Coming Soon</p>
+            </div>
+            <div class="merch-card">
+                <div class="merch-placeholder">
+                    Team Hats
+                </div>
+                <h3>Rally Caps & Accessories</h3>
+                <p>Protect yourself from the elements with our signature caps and accessories.</p>
+                <p style="color: #ff4444; font-weight: bold; margin-top: 1rem;">Coming Soon</p>
+            </div>
+            <div class="merch-card">
+                <div class="merch-placeholder">
+                    Stickers & Decals
+                </div>
+                <h3>Team Stickers</h3>
+                <p>Show your support with weather-resistant stickers perfect for your car, laptop, or toolbox.</p>
+                <p style="color: #ff4444; font-weight: bold; margin-top: 1rem;">Coming Soon</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="font-size: 1.2rem; color: #cccccc;">
+                Merchandise store launching soon! Follow our social media for updates.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="email">Team Email:</label>
+                    <input type="email" id="email" value="renegaderallysport@gmail.com" readonly style="background: #333; color: #ccc;">
+                </div>
+                
+                <h3 style="color: #ff4444; margin: 2rem 0 1rem 0; text-align: center;">Customer Request Form</h3>
+                
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerEmail">Email Address *</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" name="customerPhone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="requestType">Request Type</label>
+                    <select id="requestType" name="requestType" style="width: 100%; padding: 1rem; border: 2px solid #444444; border-radius: 10px; background: #111111; color: #ffffff; font-size: 1rem;">
+                        <option value="">Select a request type...</option>
+                        <option value="sponsorship">Sponsorship Opportunity</option>
+                        <option value="media">Media/Press Inquiry</option>
+                        <option value="merchandise">Merchandise Inquiry</option>
+                        <option value="general">General Question</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Please provide details about your request..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Request</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="gallery" class="section gallery-section-wrapper">
+    <div id="main-gallery">
+        <h2>Gallery</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #cccccc;">
+            Browse folders from our rally adventures. Click a folder to view its full gallery.
+        </p>
+        <div class="gallery-folders">
+            <a href="#" class="folder-card" onclick="openGallery('sofr')">
+                <div class="folder-thumb">
+                    <img src="https://uploads.onecompiler.io/43nk8cywp/43nsbxzhw/348388711_187721050924276_5244254472484386967_n.jpg" alt="Southern Ohio Forest Rally Cover" />
+                </div>
+                <h3>Southern Ohio Forest Rally 2023</h3>
+                <div class="photo-count">12 Photos</div>
+            </a>
+            <a href="#" class="folder-card" onclick="openGallery('lspr')">
+                <div class="folder-thumb">
+                    <img src="https://i.postimg.cc/j51RKshg/A56-A2092-1.jpg" alt="Lake Superior Performance Rally Cover" />
+                </div>
+                <h3>Lake Superior Performance Rally 2023</h3>
+                <div class="photo-count">15 Photos</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Southern Ohio Forest Rally Gallery -->
+    <div id="sofr-gallery" class="gallery-view">
+        <div class="gallery-header">
+            <button class="back-button" onclick="backToMain()">← Back to Gallery</button>
+            <h2 class="gallery-title">Southern Ohio Forest Rally 2023</h2>
+        </div>
+        <div class="photo-grid" id="sofr-photos"></div>
+    </div>
+
+    <!-- Lake Superior Performance Rally Gallery -->
+    <div id="lspr-gallery" class="gallery-view">
+        <div class="gallery-header">
+            <button class="back-button" onclick="backToMain()">← Back to Gallery</button>
+            <h2 class="gallery-title">Lake Superior Performance Rally 2023</h2>
+        </div>
+        <div class="photo-grid" id="lspr-photos"></div>
+    </div>
+</section>
+
+<!-- Add this lightbox HTML right before your closing </body> tag -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImage()">‹</button>
+        <img id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()">›</button>
+    </div>
+</div>
+
+    <script>
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Hide hero section
+            const hero = document.querySelector('.hero');
+            hero.style.display = 'none';
+            
+            // Show selected section
+            if (sectionName === 'home') {
+                hero.style.display = 'flex';
+            } else {
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('customerName'),
+                email: formData.get('customerEmail'),
+                phone: formData.get('customerPhone'),
+                requestType: formData.get('requestType'),
+                message: formData.get('message')
+            };
+            
+            // Here you would typically send the data to your server
+            console.log('Form submission:', data);
+            
+            alert('Thank you for your request! We will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+        function addImage(event, folderId, codeInputId) {
+    const adminCode = document.getElementById(codeInputId).value;
+    if (adminCode !== '8686') {
+        alert('Incorrect admin code. Upload denied.');
+        return;
+    }
+ const files = event.target.files;
+    const container = document.getElementById(folderId);
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) 
+        {
+            const galleryItem = document.createElement('div');
+            galleryItem.classList.add('gallery-item');
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = file.name;
+
+            const downloadBtn = document.createElement('a');
+            downloadBtn.href = e.target.result;
+            downloadBtn.download = file.name;
+            downloadBtn.className = 'download-btn';
+            downloadBtn.innerText = 'Download';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerText = 'Delete';
+            deleteBtn.onclick = () => {
+                if (confirm('Are you sure you want to delete this image?')) {
+                    galleryItem.remove();
+                }
+            };
+
+            galleryItem.appendChild(img);
+            galleryItem.appendChild(downloadBtn);
+            galleryItem.appendChild(deleteBtn);
+            container.appendChild(galleryItem);
+        }
+
+        reader.readAsDataURL(file);
+    }
+   
+}
+    </script>
+    <script>
+      const galleryData = {
+    sofr: [
+        
+        {
+            url: "https://i.postimg.cc/Dw3kMVMT/20230610-06-A4841.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Jz3VwTfB/20230610-06-A4842.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wBFCM1Tq/20230610-06-A4843.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wB6K9Xz4/20230610-06-A4844.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/J4Z4nQwR/20230610-06-A4845.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/FHvFJJm3/20230610-06-A4847.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/FF2HNBBP/20230610-06-A4848.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pLBWQXX7/20230610-06-A4849.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/tgCXBQsg/20230610-MG-3884.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/857TVRBQ/20230610-MG-3885.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/bNcpK2ZW/20230610-MG-3886.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Y2mtnxCQ/20230610-MG-3887.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/BQT4sQD6/20230610-MG-3888.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/KYz2nPWk/20230610-MG-3889.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/P5dhqszM/20230610-MG-3890.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/xdLzzps5/230609234712-IMG-8189.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9F3zGY7N/230609234712-IMG-8196.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/52RhCnHX/230609234712-IMG-9603.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/cLxxm94T/230609234712-IMG-9607.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/cLFs5RvW/230609234712-IMG-9618.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/0NKLdDmc/230609234712-IMG-9625.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/cC02Szzb/230611203700-IMG-1415.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/bvnB28c5/230611203700-IMG-1418.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/NFjDbvSB/230611203700-IMG-1421.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/FRmDdLxf/230611204004-IMG-2091.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/vm50Zz5F/230611204004-IMG-2095.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/63YL813S/230611204004-IMG-2100.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/YS71bwLZ/230612193934-DSC-0665.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Qt4189YZ/230612193934-DSC-2203.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/z3mLvnn6/230612193934-DSC-2749.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/GpMx259f/230612193935-DSC-0664.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/FHTLgJmd/230612193935-DSC-0666.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/C1sYkbT9/230612193935-DSC-0670.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/JhbWCjnt/230612193935-DSC-0673.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pXpbXwTw/230612193935-DSC-0674.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9MCHmzRb/230612193935-DSC-0675.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/QMgvys4T/230612193935-DSC-0676.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/yddnyzwB/230612193935-DSC-2197.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/PJv40QXR/230612193935-DSC-2199.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/z3mjNH3X/230612193935-DSC-2201.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/7PCrxvbp/230612193935-DSC-2205.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/KvnVzmbs/230612193935-DSC-2208.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Kjt9RD6g/230612193935-DSC-2210.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/5NM7DDz5/230612193935-DSC-2211.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/7Pztsq5Y/230612193935-DSC-2216.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/W155F3HS/230612193935-DSC-2219.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/c4mm2C0Z/230612193935-DSC-2227.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/3r90Hv4L/230612193935-DSC-2230.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/sgGMSHn8/230612193935-DSC-2231.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Qxt9Ndcj/230612193935-DSC-2232.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/c4bKvGcw/230612193935-DSC-2236.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/MHGTG9M9/230612193935-DSC-2742.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/L8PshY5F/230612193935-DSC-2745.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/5tM2z4QY/230612193935-DSC-2746.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/rFKsXYLm/230612193935-DSC-2754.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/MT6Zs9Dz/230612193936-DSC-2207.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/5yj4JjTG/230612193936-DSC-2214.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9XNXptqj/230612193936-DSC-2228.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/jdwxkwzn/230612193936-DSC-2229.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/nhZHcHs3/1-K2-A0038-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/v8zhShrD/1-K2-A0307-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/j2Zhwqxy/1-K2-A0315-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/8c1HzfS1/1-K2-A0319-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/DZ36RYp4/1-K2-A0326-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/T17r2k09/1-K2-A1056-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/DfBQcZhX/1-K2-A4991-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zBkC6DR4/1-K2-A9501-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/PxcXtYZD/4-F6-A1888-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wjshHQmX/4-F6-A9692-Full-Res.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/TP0XCScQ/IMG-7220.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/CMXpPbjy/IMG-7221.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/4Nckrn5Y/IMG-7222.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wjd8HHf0/IMG-7223.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/mkvxPGbZ/IMG-7224.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zBQ6Q1Hw/IMG-7225.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pyb72YZp/IMG-7226.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/gj6QFB3C/IMG-7227.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pVhLLWCH/IMG-7302.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/jdyqyMB3/IMG-7303.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Gpmcwdt6/IMG-7304.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/dVBqxLs8/IMG-7306.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9fgccKq0/IMG-7308.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/QtRsT7mr/IMG-7316.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/nh0J1g22/IMG-7320.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/dVqFrw2D/IMG-7321.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/430RDcrh/IMG-8477.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/rmt2MmkZ/IMG-8478.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/02v11PHZ/IMG-8480.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/GhjwcVWR/IMG-8481.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pLXNykvF/IMG-8482.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/BvkRY0KT/IMG-8483.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/VvcpwW45/IMG-8484.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/kGFZgRhs/IMG-8486.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/hPc63Mf5/IMG-8487.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/7ZLcq611/IMG-8489.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/8znYcSw2/IMG-8490.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/yNMrhyMn/IMG-8492.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Gtr7Vhhy/IMG-8494.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/m2LpSDnx/IMG-8495.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/MZbrRRdb/IMG-8497.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/m2mXp4xP/IMG-8499.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/NjVNYxjY/IMG-8500.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/d1c4ZtCx/IMG-8908.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/fRkH6PZB/received-588876970011075.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/YS49zBGw/20230608-06-A2330.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Kvq3PNqB/20230608-06-A2870.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/g21w50P0/20230608-06-A2871.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/DwSJBXHD/20230608-06-A2874.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9fT4jjWY/20230608-06-A2875.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/ZnY03B6w/20230608-MG-2482-Enhanced-NR.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/nrdr1Fkp/20230608-MG-2483-Enhanced-NR.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/66z8KcNg/20230608-MG-2484-Enhanced-NR.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/RVFNZtSF/20230608-MG-2485-Enhanced-NR.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/pL5rDtnM/20230609-06-A3393.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/j5cSsxBP/20230609-06-A3394.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/J0d7kTrh/20230609-06-A3399.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/hP6P43Zy/20230609-MG-2862.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/YSwrYLHQ/20230609-MG-2863.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/0Qk9HgrQ/20230609-MG-2864.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/sXTsknZJ/20230609-MG-2865.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/bYFqLBPy/20230609-MG-2866.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/MKMqLmZy/20230610-06-A4827.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/3x278rvN/20230610-06-A4828.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Qx2hZKVv/20230610-06-A4830.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/tgybY035/20230610-06-A4831.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Hxv1ZVfZ/20230610-06-A4835.jpg",
+            caption: ""
+        },
+        
+        
+    ],
+    lspr: [
+        {
+            url: "https://i.postimg.cc/d1NV1RJ9/A56-A2069-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/j51RKshg/A56-A2092-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Bn5ZDfqb/A56-A2096-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/jjsx435X/A56-A5671-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/gj6m2fSY/A56-A5695-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/QtFHcY4z/A56-A5700-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/YCxG7WLd/A56-A5854-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zfXLGGn8/A56-A5859-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/tT87kd84/A56-A7744-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Z5Jnw5sp/A56-A7748-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/W1S3CcxK/A56-A8488-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wBGBxcqQ/A56-A8494-1.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/FFnZS1pW/231013221220-IMG-2039.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Prwm8yPJ/231013221220-IMG-2045.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/3r6XRVrz/231013221220-IMG-3038.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/XJYfG0C6/231014230610-IMG-4255.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/50Kw8kBY/231014230610-IMG-4263.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/130wvz0Z/231014230611-IMG-4975.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/KYJLyssq/231015000251-200-02.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/QCWW1NNw/231015000251-200-09.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zXKx18wx/231015000251-200-10.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/WpQ5KhZD/231015000251-200-15.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/G3BMqk4w/231019203235-IMG-4264.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Jh6qQnmz/231019203235-IMG-4984.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/sXMJHrD9/IMG-0521.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/G26xZ540/IMG-0524.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/y6SPFsG7/IMG-0527.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/W1swLr14/IMG-0583.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/x1sHw4Zs/IMG-2102.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/J0WB3Vyh/IMG-2104.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/GtJTq7Yx/IMG-2106.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/65tvyKJj/IMG-2108.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/c4h83zds/IMG-2110.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/6Qk7wJfh/IMG-2112.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/1XPfnGTn/IMG-2114.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/TYdKTcgB/IMG-2116.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/1XH4pghW/IMG-2118.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/cLjCMy2N/IMG-2121.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/qRc7TtRk/IMG-2122.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/2y281PhM/IMG-2123.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/1RHz7N2B/IMG-2129.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/yY88M8zH/IMG-3111.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/jjPxHWyz/IMG-3113.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/4yNXRBq5/IMG-3115.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/5y7b48MM/IMG-3117.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/ryQ8N2RY/IMG-3119.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wjsgztfS/IMG-3121.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/mrfRgbKh/IMG-3123.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/SsVpdcRz/IMG-3125.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/t4PQfK7b/IMG-3126.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/W4vLP5Jk/IMG-3248.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/W4wRp0Mf/IMG-3257.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zvM627r3/IMG-3262.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/447gVHZn/IMG-4582.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/yNQMSsbF/IMG-4584.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/k4LLfw9G/IMG-4586.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/857qR92x/IMG-4588.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/8PRxmhYk/IMG-4590.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/sxpHKrwH/IMG-4592.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/nrt0XWp4/IMG-4596.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/xT5tdg7m/IMG-4598.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/wjb2XM9T/IMG-4600.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/5tY3nJt5/IMG-4602.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/vHYtCfBZ/IMG-4604.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/LXFzDZwR/IMG-4607.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/J7qb30qV/IMG-4609.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/fTqmFPp8/IMG-4610.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/vHZ50yq1/IMG-5129.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/KYBT18zW/IMG-5137.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/NfFr14Fm/IMG-5144.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Rhs6k3sW/IMG-5146.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/1zhn11Hr/IMG-5147.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/L4CJ61DX/IMG-5152.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/cJSH5MxD/IMG-5153.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/gJc0Gz68/IMG-5465.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/RhyC1wpL/IMG-5679.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/VL0kfH5G/IMG-5681.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/zf8zkz76/IMG-5683.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9MNcVG2H/IMG-5684.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Y0GMSh2G/IMG-5686.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/Y2Ztsf81/IMG-5688.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/BvS3KhQG/IMG-5690.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/9XRD0fnY/IMG-5692.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/jj3jdV61/IMG-5694.jpg",
+            caption: ""
+        },
+        {
+            url: "https://i.postimg.cc/yN8dH6R9/IMG-5696.jpg",
+            caption: ""
+        },
+        
+    ]
+};
+
+let currentGallery = '';
+let currentImageIndex = 0;
+
+function openGallery(galleryType) {
+    document.getElementById('main-gallery').style.display = 'none';
+    document.getElementById(galleryType + '-gallery').classList.add('active');
+    currentGallery = galleryType;
+    loadGalleryPhotos(galleryType);
+}
+
+function backToMain() {
+    document.querySelectorAll('.gallery-view').forEach(view => {
+        view.classList.remove('active');
+    });
+    document.getElementById('main-gallery').style.display = 'block';
+    currentGallery = '';
+}
+
+function loadGalleryPhotos(galleryType) {
+    const photoGrid = document.getElementById(galleryType + '-photos');
+    const photos = galleryData[galleryType];
+    
+    photoGrid.innerHTML = '';
+    
+    photos.forEach((photo, index) => {
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+        photoItem.onclick = () => openLightbox(index);
+        
+        photoItem.innerHTML = `
+            <img src="${photo.url}" alt="${photo.caption}" />
+            <div class="photo-caption">${photo.caption}</div>
+        `;
+        
+        photoGrid.appendChild(photoItem);
+    });
+}
+
+function openLightbox(index) {
+    currentImageIndex = index;
+    const photo = galleryData[currentGallery][index];
+    document.getElementById('lightbox-img').src = photo.url;
+    document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+}
+
+function nextImage() {
+    const photos = galleryData[currentGallery];
+    currentImageIndex = (currentImageIndex + 1) % photos.length;
+    document.getElementById('lightbox-img').src = photos[currentImageIndex].url;
+}
+
+function prevImage() {
+    const photos = galleryData[currentGallery];
+    currentImageIndex = (currentImageIndex - 1 + photos.length) % photos.length;
+    document.getElementById('lightbox-img').src = photos[currentImageIndex].url;
+}
+
+// Close lightbox when clicking outside the image
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLightbox();
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+            nextImage();
+        } else if (e.key === 'ArrowLeft') {
+            prevImage();
+        }
+    }
+});
+
+function addImage(event, galleryId, codeInputId) {
+    const gallery = document.getElementById(galleryId);
+    const code = document.getElementById(codeInputId).value;
+    const adminCode = "8686"; 
+
+    if (code !== adminCode) {
+        alert("Invalid admin code.");
+        return;
+    }
+
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.alt = file.name;
+        img.style = "width: 100%; height: auto; border-radius: 10px;";
+        img.onclick = () => {
+            const link = document.createElement('a');
+            link.href = e.target.result;
+            link.download = file.name;
+            link.click();
+        };
+        const wrapper = document.createElement("div");
+        wrapper.className = "image-wrapper";
+        wrapper.appendChild(img);
+        gallery.appendChild(wrapper);
+    };
+    reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
